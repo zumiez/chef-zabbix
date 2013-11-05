@@ -83,8 +83,11 @@ template "/etc/nginx/sites-available/zabbix" do
     :server_name => node['zabbix']['web']['fqdn'],
     :php_settings => node['zabbix']['web']['php']['settings'],
     :web_port => node['zabbix']['web']['port'],
+    :web_ssl_port => node['zabbix']['web']['ssl_port'],
     :web_dir => node['zabbix']['web_dir'],
     :fastcgi_listen => node['zabbix']['web']['php']['fastcgi_listen']
+    :ssl_certificate => node['zabbix']['web']['ssl_certificate']
+    :ssl_certificate_key => node['zabbix']['web']['ssl_certificate_key']
   })
   notifies :reload, "service[nginx]"
 end

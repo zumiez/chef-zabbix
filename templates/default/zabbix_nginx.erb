@@ -1,7 +1,7 @@
 server {
 
   listen      <%= @web_port %>;
-  <%= "listen #{@web_ssl_port]} ssl;" if ! @web_ssl_port.nil? %>
+  <%= "listen #{@web_ssl_port} ssl;" if ! @web_ssl_port.nil? %>
   index       index.php;
   root        <%= @web_dir %>;
   server_name "<%=@server_name%>";

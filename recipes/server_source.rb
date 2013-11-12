@@ -62,7 +62,7 @@ when 'postgres'
 end
 if node['zabbix']['server']['proxy']
     enable_proxy = "--enable-proxy"
-    configure_options << enable_proxy unless configure_options.include(enable_proxy)
+    configure_options << enable_proxy unless configure_options.include?(enable_proxy)
 end
 node.normal['zabbix']['server']['configure_options'] = configure_options
 

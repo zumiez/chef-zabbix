@@ -4,7 +4,11 @@
 #
 # Written by Alexei Vladishev <alexei.vladishev@zabbix.com>.
 
+<% if node['zabbix']['server']['proxy'] -%>
+NAME=zabbix_proxy
+<% else -%>
 NAME=zabbix_server
+<% end -%>
 DAEMON=<%= node.zabbix.install_dir %>/sbin/${NAME}
 DESC="Zabbix server daemon"
 DIR=<%= node.zabbix.run_dir %>

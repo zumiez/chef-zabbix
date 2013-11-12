@@ -60,6 +60,10 @@ when 'postgres'
   with_postgresql = "--with-postgresql"
   configure_options << with_postgresql unless configure_options.include?(with_postgresql)
 end
+if node['zabbix']['server']['proxy']
+    enable_proxy = "--enable-proxy"
+    configure_options << enable_proxy unless configure_options.include(enable_proxy)
+end
 node.normal['zabbix']['server']['configure_options'] = configure_options
 
 zabbix_source "install_zabbix_server" do

@@ -25,3 +25,8 @@ JavaGatewayPort=<%= @java_gateway_port %>
 StartJavaPollers=<%= @java_pollers %>
 
 ExternalScripts=<%= node['zabbix']['server']['externalscriptspath'] %>
+
+<% if node['zabbix']['server']['proxy'] -%>
+Server=<%= node['zabbix']['server']['host'] %>
+ServerPort=<%= node['zabbix']['server']['port'] %>
+<% end -%>

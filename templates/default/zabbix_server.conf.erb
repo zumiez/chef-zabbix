@@ -15,11 +15,11 @@ DBPort=<%= @dbport %>
 DebugLevel=<%= node['zabbix']['server']['log_level'] %>
 PidFile=<%= node['zabbix']['run_dir'] %>/zabbix_server.pid
 Include=<%= node['zabbix']['server']['include_dir'] %>
-<% not if node['zabbix']['server']['proxy'] -%>
+<% if not node['zabbix']['server']['proxy'] -%>
 AlertScriptsPath=<%= node['zabbix']['alert_dir'] %>
 <% end -%>
 
-<% not if node['zabbix']['server']['proxy'] -%>
+<% if not node['zabbix']['server']['proxy'] -%>
 HousekeepingFrequency=<%= node['zabbix']['server']['housekeeping_frequency']%>
 MaxHousekeeperDelete=<%= node['zabbix']['server']['max_housekeeper_delete'] %>
 <% end -%>

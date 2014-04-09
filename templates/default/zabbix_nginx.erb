@@ -1,11 +1,15 @@
 server {
+    listen <%= @web_port %>;
+    server_name "<%=@server_name%>";
+    rewrite ^ https://$server_name$request_uri? permanent;
+}
 
-  listen      <%= @web_port %>;
+server {
   <%= "listen #{@web_ssl_port} ssl;" if ! @web_ssl_port.nil? %>
   index       index.php;
   root        <%= @web_dir %>;
   server_name "<%=@server_name%>";
-  
+
   access_log /var/log/nginx/zabbix.access.log;
 
   <% if @ssl_certificate -%>
